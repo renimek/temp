@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Adult filter</title>
+
+</head>
+<body>
+<script type="text/javascript" src="myscript.js"></script>
+<div class="cont1 container-fluid col-sm-4 col-sm-offset-4">
+    <h1>Adult filter</h1>
+    <form>
+        <table id="myTable1" class="myTable1">
+            <tr>
+                <th class="th1 text-center">Name</th>
+                <th class="th1 text-center">Age</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="imie" id="0"></td>
+                <td><input type="number" name="wiek" onfocus="onFocus(); return false;"></td>
+            </tr>
+        </table>
+    </form>
+    <div class="form-actions">
+        <input class = "button1" type="Submit" value="Filter!"   onclick="podlicz(); return false;">
+    </div>
+    <p style="font-size: 10px;"class="text-center">( Age column only accept numbers. )</p>
+</div>
+
+<div class="cont2 container-fluid col-sm-4 col-sm-offset-4">
+    <table id="myTable2" class="myTable2">
+        <tr>
+            <th class=" th2 text-center" colspan="2">List of adults</th>
+        </tr>
+        <tr class="perm">
+            <th class="th3 text-center col-sm-2 col-sm-offset-4">Name</th>
+            <th class="th3 text-center col-sm-2 col-sm-offset-6">Age</th>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

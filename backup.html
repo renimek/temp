@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>?????????</title>
+</head>
+<body>
+<header class="page-header row">
+    <h1 class="col-sm-4 col-sm-offset-4">List of adults</h1>
+</header>
+
+<form>
+    <table id="myTable1" class="myTable1">
+        <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Age</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="imie" class="0"></td>
+            <td><input type="text" name="wiek" class="0" onfocus="onFocus(); return false;"></td>
+        </tr>
+    </table>
+</form>
+
+
+
+<div class="form-actions">
+    <input class = "button1" type="Submit" value="Adult filter !" onclick="podlicz(); return false;">
+</div>
+
+<table id="myTable2">
+    <tr>
+        <th class="th2" colspan="2">List of adults</th>
+    </tr>
+    <tr id="gowno">
+        <td class="th3">Name</td>
+        <td class="th3">Age</td>
+    </tr>
+</table>
+
+
+</body>
+</html>
+
+<script>
+	var i=0;
+
+	function podlicz(){
+		var names = document.getElementsByName("imie");
+		var ages = document.getElementsByName("wiek");
+		var sum=0;
+
+		for(j=0;j<names.length;j++){
+			var condition = names[j].value!="" && ages[j].value !="" && !(/\W0-9_/g).test(names[j].value) && !(/\D/g).test(ages[j].value) && ages[j].value >= 18;
+			if(condition){
+				var newItem1 = document.createElement("td");
+				newItem1.innerHTML = names[j].value;
+				var newItem2 = document.createElement("td");
+				newItem2.innerHTML = ages[j].value;
+				var table = document.getElementById("myTable2");
+				var row = table.insertRow();
+				row.appendChild(newItem1);
+				row.appendChild(newItem2);
+				sum=sum+parseInt(ages[j].value);
+			}
+		}
+		var newItem3 = document.createElement("td");
+		var table = document.getElementById("myTable2");
+		var row = table.insertRow();
+		row.appendChild(newItem3);
+		newItem3.innerHTML = 'sum of age of adults:    '+sum;
+	}
+
+	function onFocus(){
+		if(this.class!="kappa"){
+			i++;
+			var x = document.createElement("input");
+			var y = document.createElement("input");
+			x.name="imie";
+			y.name="wiek";
+			x.setAttribute("id",i);
+			y.setAttribute("id",i);
+			y.onfocus = onFocus;
+			var newItem1 = document.createElement("td");
+			newItem1.appendChild(x);
+			var newItem2 = document.createElement("td");
+			newItem2.appendChild(y);
+			var table = document.getElementById("myTable1");
+			var row = table.insertRow();
+			row.appendChild(newItem1);
+			row.appendChild(newItem2);
+		}
+		this.class="kappa";
+	}
+</script>
